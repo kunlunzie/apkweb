@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seminar Proposal Wulan Rafiqah</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            opacity: 0;
+            top: 0;
+            animation: confettiFall 5s linear infinite;
+        }
+        
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(600px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        h1 {
+            color: #4a6baf;
+            margin-bottom: 20px;
+            font-size: 2.2em;
+        }
+        
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .btn-play {
+            background: #4a6baf;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(74, 107, 175, 0.4);
+        }
+        
+        .btn-play:hover {
+            background: #3a5a9f;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(74, 107, 175, 0.6);
+        }
+        
+        .btn-play:active {
+            transform: translateY(1px);
+        }
+        
+        .flower {
+            position: absolute;
+            font-size: 1.5em;
+            opacity: 0.7;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .signature {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.5em;
+            margin-top: 30px;
+            color: #4a6baf;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="flower" style="top: 20px; left: 30px;">🌸</div>
+        <div class="flower" style="top: 20px; right: 30px;">🌼</div>
+        <div class="flower" style="bottom: 20px; left: 30px;">🌺</div>
+        <div class="flower" style="bottom: 20px; right: 30px;">🌻</div>
+        
+        <h1>Selamat Seminar Proposal</h1>
+        <p>Kepada yang terhormat,</p>
+        <p class="highlight">Wulan Rafiqah</p>
+        
+        <p>Semoga seminar proposal ini berjalan dengan lancar dan sukses.</p>
+        <p>Semangat dalam mempresentasikan karya terbaikmu!</p>
+        <p>Kami percaya kamu akan memberikan yang terbaik dan melewati ini dengan gemilang.</p>
+        <p>Sukses selalu untuk perjalanan akademismu!</p>
+        
+        <button class="btn-play" onclick="playAudio()">Putar Ucapan Suara</button>
+        
+        <div class="signature">Semangat dan Sukses!</div>
+        
+        <!-- Confetti elements will be added here by JS -->
+    </div>
+
+    <audio id="congratAudio" src="https://www.soundjay.com/human/sounds/applause-01.mp3"></audio>
+    
+    <script>
+        function playAudio() {
+            const audio = document.getElementById('congratAudio');
+            audio.play();
+            createConfetti();
+        }
+        
+        function createConfetti() {
+            const colors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4CAF50', '#8BC34A', '#CDDC39', '#FFEB3B', '#FFC107', '#FF9800', '#FF5722'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 5 + 's';
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = Math.random() * 10 + 5 + 'px';
+                
+                document.querySelector('.card').appendChild(confetti);
+                
+                // Remove confetti after animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+        
+        // Create some initial confetti when page loads
+        window.onload = function() {
+            createConfetti();
+        };
+    </script>
+</body>
+</html>
